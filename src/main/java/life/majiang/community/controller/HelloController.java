@@ -1,5 +1,10 @@
 package life.majiang.community.controller;
 
+/*
+ * Spring Boot 初运行
+ * 访问地址需带参数  name=name
+ */
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

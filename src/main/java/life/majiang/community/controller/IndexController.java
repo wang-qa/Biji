@@ -1,5 +1,9 @@
 package life.majiang.community.controller;
 
+/*
+ * 定义自己的 index
+ */
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
