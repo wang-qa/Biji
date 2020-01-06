@@ -44,7 +44,7 @@ public class GithubProvider {
         Request request = new Request.Builder()
                 .url("https://api.github.com/user?access_token=" + accessToken)
                 .build();
-        System.out.println("getUser" + accessToken);
+        System.out.println("getUser >>> " + accessToken );
         try {
             Response response = client.newCall(request).execute();
             String string = response.body().string();

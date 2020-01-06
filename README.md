@@ -23,6 +23,8 @@
 
 ## 进度
 > 1. `GitHub`登录之调用 `authorize`
-> 2. `GitHub`登录之获取`code`
+> 2. `GitHub`登录之获取 用户信息`code``token``UserName`
+> 3. 配置文件`application.properties`新增配置参数 GitHub.client 信息
+>
 >
 
