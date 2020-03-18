@@ -29,6 +29,11 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
         <!-- mybatis/ -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -66,6 +71,8 @@
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
         </dependency>
+
+
 
 
     </dependencies>
