@@ -26,6 +26,24 @@
 > 1. `GitHub`登录之调用 `authorize`
 > 2. `GitHub`登录之获取 用户信息`code``token``UserName`
 > 3. 配置文件`application.properties`新增配置参数 GitHub.client 信息
-> 4. 使用spring boot 链接数据库并插入数据
+> 4. 使用 `MyBaits` 链接数据库并插入数据
 >
+
+## 数据库脚本
+
+```sql
+-- ----------------------------
+-- Table structure for User 
+-- ----------------------------
+CREATE TABLE "PUBLIC"."USER"(
+
+    "ID" INT DEFAULT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    "ACCOUNT_ID" VARCHAR,
+    "NAME" VARCHAR(100),
+    "TOKEN" CHAR(36),
+    "GMT_CREATE" BIGINT,
+    "GMT_MODIFIED" BIGINT
+)
+
+```
 
