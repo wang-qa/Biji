@@ -54,12 +54,14 @@ public class AuthorizeController {
 //        登录跳转
         if (githubUser != null) {
             User user = new User();
-            user.setToken(UUID.randomUUID().toString());
+            user.setToken(UUID.randomUUID().toString()); // 生成唯一的标识码
             user.setName(githubUser.getName());
             user.setAccountID(String.valueOf(githubUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
-            userMapper.insert(new User());
+            System.out.println("--->>> usermapper >>>--- " + userMapper);
+            System.out.println("--->>> insertuser >>>--- " + user);
+            userMapper.insert(user);
 
             // 登录成功 >>> 写 cookies 和 session
             request.getSession().setAttribute("user", githubUser); // session存入 user对象

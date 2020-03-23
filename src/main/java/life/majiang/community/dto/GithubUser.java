@@ -4,9 +4,9 @@ package life.majiang.community.dto;
  * 获取Github 用户信息
  */
 public class GithubUser {
-    private String name;
-    private Long id;
-    private String bio;
+    private String name; // 用户昵称
+    private Long id; // 用户id
+    private String bio; // 个人签名
 
     public String getName() {
         return name;
