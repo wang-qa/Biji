@@ -20,6 +20,8 @@
 > git commit -m "备注" # 提交到本地仓库
 > git push origin master # 推送到名为origin的远程仓库的master分支
 > git pull origin master # 拉取名为origin的远程仓库的master分支
+> git commit --amend --no-edit # 提交 > 追加文件到上次本地提交 不需要改备注
+> git push -f origin master # 本地强制提交
 > ```
 
 ## 进度
@@ -27,11 +29,13 @@
 > 2. `GitHub`登录之获取 用户信息`code``token``UserName`
 > 3. 配置文件`application.properties`新增配置参数 GitHub.client 信息
 > 4. 使用 `MyBaits` 链接数据库并插入数据
+> 5. 实现持久化登录 服务器下发 user_token 并在数据库查询
 >
 
 ## 数据库脚本
 
 ```sql
+table For H2
 -- ----------------------------
 -- Table structure for User 
 -- ----------------------------
@@ -46,4 +50,5 @@ CREATE TABLE "PUBLIC"."USER"(
 )
 
 ```
+
 
