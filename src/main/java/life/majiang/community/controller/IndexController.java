@@ -29,15 +29,17 @@ public class IndexController {
     @GetMapping("/")
     public String index(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies(); // 获取用户 cookie
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
-                String token = cookie.getValue();
-                User user = userMapper.findByToken(token);
-                // 如果user != null 写入session
-                if (user != null) {
-                    request.getSession().setAttribute("user", user);
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
+                    String token = cookie.getValue();
+                    User user = userMapper.findByToken(token);
+                    // 如果user != null 写入session
+                    if (user != null) {
+                        request.getSession().setAttribute("user", user);
+                    }
+                    break; // 命中后结束循环
                 }
-                break; // 命中后结束循环
             }
         }
         return "index";

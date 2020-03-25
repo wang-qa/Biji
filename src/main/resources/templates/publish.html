@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>发布 - 麻酱社区</title>
+    <meta charset="UTF-8" http-equiv="Content-Type"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1"
+                    data-toggle="collapse" type="button">
+                <span class="sr-only">麻酱社区</span>
+            </button>
+            <a class="navbar-brand" href="#">麻酱社区</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input class="form-control" placeholder="搜索内容" type="text">
+                </div>
+                <button class="btn btn-default" type="submit">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <div th:text="${session.user}"></div>
+                <!--如果不为空则展示,打印<li>整个节点-->
+                <li class="dropdown" th:if="${session.user != null }">
+                    <!--th:text 替换整个标签a-->
+                    <a href="#" class="dropdown-toggle"
+                       aria-haspopup="true" data-toggle="dropdown"
+                       aria-expanded="false" role="button"
+                    th:text="${session.user.getName()}">个人信息<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">消息中心</a></li>
+                        <li><a href="#">个人资料</a></li>
+                        <li><a href="#">退出登录</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.user == null}">
+                    <a href="https://github.com/login/oauth/authorize?client_id=639f4c8d6441c6136b44&redirect_url=http://localhost:8080/callback&scope=user&state=1">登录</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="background-color: red"></div>
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" style="background-color: green"> </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
