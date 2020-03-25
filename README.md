@@ -30,8 +30,14 @@
 > 3. 配置文件`application.properties`新增配置参数 GitHub.client 信息
 > 4. 使用 `MyBaits` 链接数据库并插入数据
 > 5. 实现持久化登录 服务器下发 user_token 并在数据库查询
+> 6. 集成 `Flyway Migration` 统一数据库结构脚本(数据库版本控制)
 >
 
+```markdown
+Creating the first migration
+We create the migration directory `src/main/resources/db/migration`
+Followed by a first migration called `src/main/resources/db/migration/V1__Create_person_table.sql`
+```
 ## 数据库脚本
 
 ```sql
@@ -39,15 +45,18 @@ table For H2
 -- ----------------------------
 -- Table structure for User 
 -- ----------------------------
-CREATE TABLE "PUBLIC"."USER"(
-
-    "ID" INT DEFAULT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    "ACCOUNT_ID" VARCHAR,
-    "NAME" VARCHAR(100),
-    "TOKEN" CHAR(36),
-    "GMT_CREATE" BIGINT,
-    "GMT_MODIFIED" BIGINT
-)
+create table USER
+(
+    ID           INT auto_increment,
+    ACCOUNT_ID   VARCHAR,
+    NAME         VARCHAR(100),
+    TOKEN        CHAR(36),
+    GMT_CREATE   BIGINT,
+    GMT_MODIFIED BIGINT,
+    BIO          VARCHAR(256),
+    constraint TABLE_NAME_PK
+        primary key (ID)
+);
 
 ```
 

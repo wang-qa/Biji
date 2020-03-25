@@ -1,21 +1,5 @@
 package life.majiang.community.model;
 
-
-/**
- * 数据库User表脚本
-    create table USER
-        (
-        ID           INT auto_increment,
-        ACCOUNT_ID   VARCHAR,
-        NAME         VARCHAR(100),
-        TOKEN        CHAR(36),
-        GMT_CREATE   BIGINT,
-        GMT_MODIFIED BIGINT,
-        constraint TABLE_NAME_PK
-        primary key (ID)
-        );
-*/
-
 public class User {
     private Integer id; // 用户自增id
     private String name; // username
