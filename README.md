@@ -1,19 +1,23 @@
 # Spring boot
-练习资料
+练习参考资料
 >[Spring Boot 文档](https://spring.io/projects/spring-boot)
 >[Spring Web](https://spring.io/guides/gs/serving-web-content/)
 >[Bootstrap 前端框架](https://v3.bootcss.com/getting-started/#download)
+>[Bootstrap 样式表](https://v3.bootcss.com/css/)
 >[ES](https://elasticsearch.cn/explore)
 >[GitHub OAuth2](https://devoloper.github.com/aoos/building-oauth-apps/creating-an-oauth-app/)
 >[Okhttp](https://square.github.io/okhttp)
 >[Spring Mybaits](https://mybatis.org/mybatis-3/zh/index.html)
+>[Flyway Migration](https://flywaydb.org/getstarted/firststeps/maven)
 
 工具
->[Git](https://github.com)
->[Visual Paradigm](https://www.visual-paradigm.com)
+>代码版本管理[GitHub](https://github.com)
+>流程图[Visual Paradigm](https://www.visual-paradigm.com)
+>数据库版本脚本管理[Flyway Migration](https://flywaydb.org/getstarted/firststeps/maven)
 
 > # Git 使用
 > ```shell script
+> # Git 使用
 > git init # 初始化本地仓库
 > git add . # 添加当前目录文件
 > git state # 查看状态
@@ -34,12 +38,14 @@
 >
 
 ```markdown
-Creating the first migration
-We create the migration directory `src/main/resources/db/migration`
-Followed by a first migration called `src/main/resources/db/migration/V1__Create_person_table.sql`
+*Flyway Migration*
+创建第一次迁移
+> 创建迁移目录 `src/main/resources/db/migration`(目标文件路径)
+> 进行第一次迁移 `src/main/resources/db/migration/V1__Create_person_table.sql`(SQL语句)
+> 执行Flyway迁移数据库 `mvn flyway:migrate`(执行语句)
 ```
-## 数据库脚本
 
+## 数据库脚本
 ```sql
 table For H2
 -- ----------------------------
