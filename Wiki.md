@@ -6,3 +6,7 @@
 ### **目录结构**
 1. 类与类（网络）之间object使用 `dto` 传输
 2. 类与类（数据库）之间object使用 `model` 传输
+
+### **HTML**
+`<input>` 用 `th:value`方式赋值（回显）
+`<textarea>` 用 `th:value`方式赋值（回显）

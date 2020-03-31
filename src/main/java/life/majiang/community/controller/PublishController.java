@@ -39,27 +39,55 @@ public class PublishController {
             HttpServletRequest request,
             Model model
     ) {
-        // 获取填写者信息
+
+        /**
+         * publish_page 获取填写者信息 判断是否登录
+         * */
         User user = null;
         Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
-                String token = cookie.getValue();
-                user = userMapper.findByToken(token);
-                // 如果user != null 写入session
-                if (user != null) {
-                    request.getSession().setAttribute("user", user);
+        if (cookies != null) {// 判断是用户 Cookie 是否为空 去除空指针
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
+                    String token = cookie.getValue();
+                    user = userMapper.findByToken(token);
+                    // 如果user != null 写入session
+                    if (user != null) {
+                        request.getSession().setAttribute("user", user);
+                    }
+                    break; // 命中后结束循环
                 }
-                break; // 命中后结束循环
             }
         }
 
-        if (user == null) {
-            model.addAttribute("error", "用户未登录");
-            return "publish";// 有问题返回 piblish
+        /**
+         * publish_page 问题提交校验逻辑 判断填写内容
+         * */
+        model.addAttribute("title", title);
+        model.addAttribute("description", description);
+        model.addAttribute("tag", tag);
+        if (title == null || title == "") { // title 为null或空
+            model.addAttribute("error", "问题标题不能为空 请输入");
+            return "publish";// 有问题返回 publish_page
+        }
+        if (description == null || description == "") { // description 为null或空
+            model.addAttribute("error", "问题描述不能为空 请输入");
+            return "publish";// 有问题返回 publish_page
+        }
+        if (tag == null || tag == "") { // tag 为null或空
+            model.addAttribute("error", "问题标签为空 请输入");
+            return "publish";// 有问题返回 publish_page
         }
 
-        // 获取参数
+
+        System.out.println("--->>> publish_pages_User >>>---" + user);
+        if (user == null) {
+            model.addAttribute("error", "用户未登录");
+            return "publish";// 有问题返回 publish_page
+        }
+
+        /**
+         * publish_page 问题提内容
+         * */
         Question question = new Question();
         question.setTitle(title);
         question.setDescription(description);

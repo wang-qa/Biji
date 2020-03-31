@@ -54,7 +54,7 @@ public class AuthorizeController {
 //        System.out.println("用户昵称 >>> " + user.getName()); // 输出 User昵称
 
         /** 登录跳转 */
-        if (githubUser != null) {
+        if (githubUser != null && githubUser.getId() != null) {//githubUser 和 getId 不为空
             /** 使用 GitHub 登录成功 */
             User user = new User();
             // 获取用户信息生成>>>用户 token

@@ -32,12 +32,15 @@
             <ul class="nav navbar-nav navbar-right">
                 <div th:text="${session.user}"></div>
                 <!--如果不为空则展示,打印<li>整个节点-->
+                <li th:if="${session.user != null }">
+                    <a href="/publish">提问</a>
+                </li>
                 <li class="dropdown" th:if="${session.user != null }">
                     <!--th:text 替换整个标签a-->
                     <a href="#" class="dropdown-toggle"
                        aria-haspopup="true" data-toggle="dropdown"
                        aria-expanded="false" role="button"
-                    th:text="${session.user.getName()}">个人信息<span class="caret"></span></a>
+                       th:text="${session.user.getName()}">个人信息<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">消息中心</a></li>
                         <li><a href="#">个人资料</a></li>
