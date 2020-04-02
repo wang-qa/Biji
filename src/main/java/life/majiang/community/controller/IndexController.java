@@ -29,7 +29,7 @@ public class IndexController {
     @GetMapping("/")
     public String index(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies(); // 获取用户 cookie
-        if (cookies != null) {// 判断是用户 Cookie 是否为空
+        if (cookies != null && cookies.length != 0) {// 判断是用户 Cookie 是否为空 长度不为0
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
                     String token = cookie.getValue();

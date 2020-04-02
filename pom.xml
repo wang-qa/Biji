@@ -77,6 +77,18 @@
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
         </dependency>
+        <!-- 热部署 修改即时生效 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+        <!-- Lombook -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 

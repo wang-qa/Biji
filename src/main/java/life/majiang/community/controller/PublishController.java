@@ -45,7 +45,7 @@ public class PublishController {
          * */
         User user = null;
         Cookie[] cookies = request.getCookies();
-        if (cookies != null) {// 判断是用户 Cookie 是否为空 去除空指针
+        if (cookies != null && cookies.length != 0) {// 判断是用户 Cookie 是否为空 长度不为0 去除空指针
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
                     String token = cookie.getValue();

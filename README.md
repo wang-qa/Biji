@@ -9,11 +9,13 @@
 >[Okhttp](https://square.github.io/okhttp)
 >[Spring Mybaits](https://mybatis.org/mybatis-3/zh/index.html)
 >[Flyway Migration](https://flywaydb.org/getstarted/firststeps/maven)
+>[Project Lombok](https://projectlombok.org/)
 
 工具
 >代码版本管理[GitHub](https://github.com)
 >流程图[Visual Paradigm](https://www.visual-paradigm.com)
 >数据库版本脚本管理[Flyway Migration](https://flywaydb.org/getstarted/firststeps/maven)
+>自动插入编辑器并构建工具[Project Lombok](https://projectlombok.org/)
 
 > # Git 使用
 > ```shell script
@@ -29,13 +31,14 @@
 > ```
 
 ## 进度
+用户信息地址 http://api.github.com/users/用户昵称
 > 1. `GitHub`登录之调用 `authorize`
 > 2. `GitHub`登录之获取 用户信息`code``token``UserName`
 > 3. 配置文件`application.properties`新增配置参数 GitHub.client 信息
 > 4. 使用 `MyBaits` 链接数据库并插入数据
 > 5. 实现持久化登录 服务器下发 user_token 并在数据库查询
 > 6. 集成 `Flyway Migration` 统一数据库结构脚本(数据库版本控制)
->
+> 7. 添加 `Lombok` 支持 自动构建
 
 ```markdown
 *Flyway Migration*
@@ -43,6 +46,7 @@
 > 创建迁移目录 `src/main/resources/db/migration`(目标文件路径)
 > 进行第一次迁移 `src/main/resources/db/migration/V1__Create_person_table.sql`(SQL语句)
 > 执行Flyway迁移数据库 `mvn flyway:migrate`(执行语句)
+
 ```
 
 ## 数据库脚本
@@ -60,6 +64,7 @@ create table USER
     GMT_CREATE   BIGINT,
     GMT_MODIFIED BIGINT,
     BIO          VARCHAR(256),
+    AVATAR_URL   VARCHAR(100),
     constraint TABLE_NAME_PK
         primary key (ID)
 );
