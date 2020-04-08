@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>麻酱社区</title>
     <meta charset="UTF-8" http-equiv="Content-Type"/>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/community.css" rel="stylesheet">
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
 
 </head>
@@ -18,7 +19,7 @@
                     data-toggle="collapse" type="button">
                 <span class="sr-only">麻酱社区</span>
             </button>
-            <a class="navbar-brand" href="#">麻酱社区</a>
+            <a class="navbar-brand" href="/">麻酱社区</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -29,17 +30,18 @@
                 </div>
                 <button class="btn btn-default" type="submit">搜索</button>
             </form>
+            <div th:text="${session.user}"></div>
             <ul class="nav navbar-nav navbar-right">
-                <div th:text="${session.user}"></div>
+
                 <!--如果不为空则展示,打印<li>整个节点-->
                 <li th:if="${session.user != null }">
                     <a href="/publish">提问</a>
                 </li>
                 <li class="dropdown" th:if="${session.user != null }">
                     <!--th:text 替换整个标签a-->
-                    <a href="#" class="dropdown-toggle"
-                       aria-haspopup="true" data-toggle="dropdown"
-                       aria-expanded="false" role="button"
+                    <a aria-expanded="false" aria-haspopup="true"
+                       class="dropdown-toggle" data-toggle="dropdown"
+                       href="#" role="button"
                        th:text="${session.user.getName()}">个人信息<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">消息中心</a></li>
@@ -55,5 +57,39 @@
         </div>
     </div>
 </nav>
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span aria-hidden="true" class="glyphicon glyphicon-list"></span>发现•查看</h2>
+            <hr>
+            <div class="media" th:each="question: ${questions}">
+                <div class="media-left">
+                    <a href="#">
+                        <img alt="用户头像"
+                             class="media-left img-rounded"
+                             th:src="${question.user.avatarUrl}">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading" th:text="${question.title}"></h4>
+                    <span th:text="${question.description}"></span> <br>
+                    <span class="text-desc">
+                        <span th:text="${question.commentCount}"></span> 个回复 •
+                        <span th:text="${question.viewCount}"></span> 次浏览 •
+                        <span th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <h3>热门话题</h3>
+            热门话题1<br>
+            热门话题2<br>
+            热门话题3<br>
+            热门话题4<br>
+            热门话题5<br>
+        </div>
+    </div>
+</div>
 </body>
 </html>

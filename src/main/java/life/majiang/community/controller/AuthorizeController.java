@@ -61,14 +61,14 @@ public class AuthorizeController {
             String token = UUID.randomUUID().toString();
             /** token 放入 User 对象中并存储到数据库 */
             user.setToken(token); // 生成唯一的标识码
-            user.setName(githubUser.getName());
-            user.setAccountID(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
-            user.setAvatarUrl(githubUser.getAvatar_url());
+            user.setName(githubUser.getName()); // set 用户名
+            user.setAccountID(String.valueOf(githubUser.getId())); // set 用户第三方id
+            user.setGmtCreate(System.currentTimeMillis()); // set 创建时间
+            user.setGmtModified(user.getGmtCreate()); // set 更新时间
+            user.setAvatarUrl(githubUser.getAvatar_url()); // set 用户头像
             System.out.println("--->>> usermapper >>>--- " + userMapper);
             System.out.println("--->>> insertuser >>>--- " + user);
-            userMapper.insert(user);
+            userMapper.insert(user); // 执行SQL
             /** Cookie 写入 */
             // 自动写入  服务器生成 Token 放入 Cookie
             response.addCookie(new Cookie("token", token));

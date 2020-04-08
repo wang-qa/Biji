@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 
 /*
  * 引入数据库
- * 类会自动放入 不是的需要引入 @Param 注解
+ * 类会自动放入 不是的类的 需要引入 @Param 注解
  */
 @Mapper
 public interface UserMapper {
@@ -17,4 +17,8 @@ public interface UserMapper {
 
     @Select("select * from USER where token = #{token}")
     User findByToken(@Param("token") String token);
+
+    @Select("select * from USER where id = #{id}")
+    User findByID(@Param("id") Integer id);
+
 }

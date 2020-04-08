@@ -89,11 +89,13 @@ public class PublishController {
          * publish_page 问题提内容
          * */
         Question question = new Question();
-        question.setTitle(title);
-        question.setDescription(description);
-        question.setTag(tag);
-        question.setCreator(user.getId());
-        questionMapper.create(question);
+        question.setTitle(title);// set 标题
+        question.setDescription(description);// set 内容
+        question.setTag(tag);// set 标签
+        question.setCreator(user.getId());// set 提问者id
+        question.setGmtCreate(System.currentTimeMillis()); // set 创建时间
+        question.setGmtModified(System.currentTimeMillis()); // set 更新时间
+        questionMapper.create(question); // 执行SQL
         return "redirect:/"; // 成功返回 首页
     }
 }

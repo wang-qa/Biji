@@ -1,0 +1,138 @@
+D:.
+├── ProjectTree // 项目结构介绍
+├── README.md
+├── Wiki.md
+├── bash.exe.stackdump
+├── community.iml
+├── mvnw
+├── mvnw.cmd
+├── pom.xml // Maveny依赖
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── life
+│   │   │       ├── CommunityApplication.java
+│   │   │       └── majiang
+│   │   │           └── community // 控制器
+│   │   │               ├── controller
+│   │   │               │   ├── AuthorizeController.java
+│   │   │               │   ├── HelloController.java // 测试
+│   │   │               │   ├── IndexController.java
+│   │   │               │   └── PublishController.java
+│   │   │               ├── dto // 传输层
+│   │   │               │   ├── AccessTokenDTO.java
+│   │   │               │   ├── GithubUser.java
+│   │   │               │   └── QuestionDTO.java
+│   │   │               ├── mapper // 映射层
+│   │   │               │   ├── QuestionMapper.java
+│   │   │               │   └── UserMapper.java
+│   │   │               ├── model // 数据库模型
+│   │   │               │   ├── Question.java
+│   │   │               │   └── User.java
+│   │   │               ├── provider  // 连接层
+│   │   │               │   └── GithubProvider.java
+│   │   │               └── service // 服务层 中间层
+│   │   │                   └── QuestionService
+│   │   └── resources // 资源
+│   │       ├── application.properties // 启动入口
+│   │       ├── db // 数据库
+│   │       │   └── migration //版本控制
+│   │       │       ├── V1__Create_User_table.sql
+│   │       │       ├── V2__Add_bio_To_User_table.sql
+│   │       │       ├── V3__Create_question_table.sql
+│   │       │       └── V4__Add_avatar_url_To_UserTable.sql
+│   │       ├── static
+│   │       │   ├── css // 样式
+│   │       │   │   ├── bootstrap-theme.css
+│   │       │   │   ├── bootstrap-theme.css.map
+│   │       │   │   ├── bootstrap-theme.min.css
+│   │       │   │   ├── bootstrap-theme.min.css.map
+│   │       │   │   ├── bootstrap.css
+│   │       │   │   ├── bootstrap.css.map
+│   │       │   │   ├── bootstrap.min.css
+│   │       │   │   ├── bootstrap.min.css.map
+│   │       │   │   └── community.css
+│   │       │   ├── fonts
+│   │       │   │   ├── glyphicons-halflings-regular.eot
+│   │       │   │   ├── glyphicons-halflings-regular.svg
+│   │       │   │   ├── glyphicons-halflings-regular.ttf
+│   │       │   │   ├── glyphicons-halflings-regular.woff
+│   │       │   │   └── glyphicons-halflings-regular.woff2
+│   │       │   └── js // js脚本
+│   │       │       ├── bootstrap.js
+│   │       │       ├── bootstrap.min.js
+│   │       │       └── npm.js
+│   │       └── templates // Web页面
+│   │           ├── hello.html // 测试
+│   │           ├── index.html
+│   │           └── publish.html
+│   └── test
+│       └── java
+│           └── life
+│               └── majiang
+│                   └── community
+│                       └── CommunityApplicationTests.java
+└── target
+    ├── classes
+    │   ├── application.properties
+    │   ├── db
+    │   │   └── migration
+    │   │       ├── V1__Create_User_table.sql
+    │   │       ├── V2__Add_bio_To_User_table.sql
+    │   │       ├── V3__Create_question_table.sql
+    │   │       └── V4__Add_avatar_url_To_UserTable.sql
+    │   ├── life
+    │   │   ├── CommunityApplication.class
+    │   │   └── majiang
+    │   │       └── community
+    │   │           ├── controller
+    │   │           │   ├── AuthorizeController.class
+    │   │           │   └── PublishController.class
+    │   │           ├── dto
+    │   │           │   ├── AccessTokenDTO.class
+    │   │           │   ├── GithubUser.class
+    │   │           │   └── QuestionDTO.class
+    │   │           ├── mapper
+    │   │           │   ├── QuestionMapper.class
+    │   │           │   └── UserMapper.class
+    │   │           ├── model
+    │   │           │   ├── Question.class
+    │   │           │   └── User.class
+    │   │           └── provider
+    │   │               └── GithubProvider.class
+    │   ├── static
+    │   │   ├── css
+    │   │   │   ├── bootstrap-theme.css
+    │   │   │   ├── bootstrap-theme.css.map
+    │   │   │   ├── bootstrap-theme.min.css
+    │   │   │   ├── bootstrap-theme.min.css.map
+    │   │   │   ├── bootstrap.css
+    │   │   │   ├── bootstrap.css.map
+    │   │   │   ├── bootstrap.min.css
+    │   │   │   ├── bootstrap.min.css.map
+    │   │   │   └── community.css
+    │   │   ├── fonts
+    │   │   │   ├── glyphicons-halflings-regular.eot
+    │   │   │   ├── glyphicons-halflings-regular.svg
+    │   │   │   ├── glyphicons-halflings-regular.ttf
+    │   │   │   ├── glyphicons-halflings-regular.woff
+    │   │   │   └── glyphicons-halflings-regular.woff2
+    │   │   └── js
+    │   │       ├── bootstrap.js
+    │   │       ├── bootstrap.min.js
+    │   │       └── npm.js
+    │   └── templates
+    │       ├── hello.html
+    │       ├── index.html
+    │       └── publish.html
+    ├── generated-sources
+    │   └── annotations
+    ├── generated-test-sources
+    │   └── test-annotations
+    └── test-classes
+        └── life
+            └── majiang
+                └── community
+                    └── CommunityApplicationTests.class
+
+50 directories, 84 files

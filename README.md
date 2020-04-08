@@ -10,12 +10,14 @@
 >[Spring Mybaits](https://mybatis.org/mybatis-3/zh/index.html)
 >[Flyway Migration](https://flywaydb.org/getstarted/firststeps/maven)
 >[Project Lombok](https://projectlombok.org/)
+>[Thymeleaf](https://thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-srreibute-values)
 
 工具
 >代码版本管理[GitHub](https://github.com)
 >流程图[Visual Paradigm](https://www.visual-paradigm.com)
 >数据库版本脚本管理[Flyway Migration](https://flywaydb.org/getstarted/firststeps/maven)
 >自动插入编辑器并构建工具[Project Lombok](https://projectlombok.org/)
+>
 
 > # Git 使用
 > ```shell script
@@ -39,6 +41,7 @@
 > 5. 实现持久化登录 服务器下发 user_token 并在数据库查询
 > 6. 集成 `Flyway Migration` 统一数据库结构脚本(数据库版本控制)
 > 7. 添加 `Lombok` 支持 自动构建
+> 8. 完善首页问题列表展示
 
 ```markdown
 *Flyway Migration*
