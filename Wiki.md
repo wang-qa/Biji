@@ -10,3 +10,9 @@
 ### **HTML**
 `<input>` 用 `th:value`方式赋值（回显）
 `<textarea>` 用 `th:value`方式赋值（回显）
+
+### **分页**
+```sql
+select * from QUESTION limit 10, 5; -- 从索引0 开始  每次显示5条
+```
+在有索引情况下`count(1)`效率高于`count(*)`

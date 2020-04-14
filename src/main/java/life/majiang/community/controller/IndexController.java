@@ -5,7 +5,7 @@ package life.majiang.community.controller;
  * 定义自己的 index
  */
 
-import life.majiang.community.dto.QuestionDTO;
+import life.majiang.community.dto.PaginationDTO;
 import life.majiang.community.mapper.UserMapper;
 import life.majiang.community.model.User;
 import life.majiang.community.service.QuestionService;
@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @Controller
 public class IndexController {
@@ -36,7 +36,10 @@ public class IndexController {
      */
     @GetMapping("/")
     public String index(HttpServletRequest request,
-                        Model model) {
+                        Model model,
+                        @RequestParam(name = "page", defaultValue = "1") Integer page, // 默认第1页
+                        @RequestParam(name = "size", defaultValue = "5") Integer size // 默认5页 每页条数
+    ) {
         Cookie[] cookies = request.getCookies(); // 获取用户 cookie
         if (cookies != null && cookies.length != 0) {// 判断是用户 Cookie 是否为空 长度不为0
             for (Cookie cookie : cookies) {
@@ -54,8 +57,8 @@ public class IndexController {
         }
         // 获取 question_list
 //        List<Question> questionList = questionMapper.list(); // question表不能返回用户头像
-        List<QuestionDTO> questionList = questionService.list();
-        model.addAttribute("questions", questionList); // 此处返回除question信息外还有User信息
+        PaginationDTO pagination = questionService.list(page, size);
+        model.addAttribute("pagination", pagination); // 此处返回除question信息外还有User信息
         return "index";
     }
 }

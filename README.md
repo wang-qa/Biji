@@ -11,6 +11,7 @@
 >[Flyway Migration](https://flywaydb.org/getstarted/firststeps/maven)
 >[Project Lombok](https://projectlombok.org/)
 >[Thymeleaf](https://thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-srreibute-values)
+>[Springboot文档手册](https://docs.spring.io/spring-boot/docs/)
 
 工具
 >代码版本管理[GitHub](https://github.com)
@@ -33,6 +34,7 @@
 > ```
 
 ## 进度
+[参考手册地址](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/)
 用户信息地址 http://api.github.com/users/用户昵称
 > 1. `GitHub`登录之调用 `authorize`
 > 2. `GitHub`登录之获取 用户信息`code``token``UserName`
@@ -42,6 +44,9 @@
 > 6. 集成 `Flyway Migration` 统一数据库结构脚本(数据库版本控制)
 > 7. 添加 `Lombok` 支持 自动构建
 > 8. 完善首页问题列表展示
+> 9. 使用 `developer tools` 添加配置 `spring.devtools.restart.exclude=static/**,public/**` 完成自动部署（热更新）
+> 10. 添加分页功能
+>
 
 ```markdown
 *Flyway Migration*
@@ -51,6 +56,13 @@
 > 执行Flyway迁移数据库 `mvn flyway:migrate`(执行语句)
 
 ```
+
+## 浏览器插件[下载Chrome扩展插件Crx离线安装包](https://crxdl.com/)
+1. Octotree：快速以tree的方式展示github上的项目文件[ctotree](https://www.octotree.io/) 
+2. Table of contents sidebar：快速展示文章大纲[Table of content sidebar](https://chrome.google.com/webstore/detail/table-of-contents-sidebar/ohohkfheangmbedkgechjkmbepeikkej) 
+3. OneTab：快速记录chrome打开页面，方便下次直接展开[One Tab](https://chrome.google.com/webstore/detail/chphlpgkkbolifaimnlloiipkdnihall) 
+
+
 
 ## 数据库脚本
 ```sql
