@@ -13,13 +13,12 @@ public class PaginationDTO {
     private boolean showNext; // 下一页按钮
     private boolean showEndPage; // 尾页按钮
 
-    private Integer Page; // 当前页
+    private Integer page; // 当前页
 
     private List<Integer> pages = new ArrayList<>(); // 总页码
-    private Integer page;
+    private Integer totalPage;
 
     public void setPagination(Integer totalCount, Integer page, Integer size) {
-        Integer totalPage;
         // 计算总页数  totalCount / size
         if (totalCount % size == 0) {
             totalPage = totalCount / size;

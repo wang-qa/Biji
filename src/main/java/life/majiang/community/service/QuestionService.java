@@ -27,13 +27,25 @@ public class QuestionService {
 
     public PaginationDTO list(Integer page, Integer size) {
 
+        PaginationDTO paginationDTO = new PaginationDTO();
+        Integer totalCount = questionMapper.count(); // 问题总数
+        paginationDTO.setPagination(totalCount, page, size); // 传入 问题总数 当前页面 每页条数
+
+        // 页码异常处理
+        if (page < 1) {//页码小于1
+            page = 1;
+        }
+        if (page > paginationDTO.getTotalPage()) {//页码大于page
+            page = paginationDTO.getTotalPage();
+        }
+
         //  size * (page -1)  实际页码
         Integer offset = size * (page - 1);
 
         List<Question> questions = questionMapper.list(offset, size); // 查询所有question  加入分页操作 每一页的列表数
         List<QuestionDTO> questionDTOList = new ArrayList<>(); // new list
 
-        PaginationDTO paginationDTO = new PaginationDTO();
+
         for (Question question : questions) { // 循环Question对象
             User user = userMapper.findByID(question.getCreator()); // 用getCreator获取当前User 返回User对象
             QuestionDTO questionDTO = new QuestionDTO();
@@ -46,9 +58,6 @@ public class QuestionService {
 //        return questionDTOList; // 返回的 DTOlist
         paginationDTO.setQuestions(questionDTOList);
 
-        Integer totalCount = questionMapper.count(); // 问题总数
-
-        paginationDTO.setPagination(totalCount, page, size); // 传入 问题总数 当前页面 每页条数
         return paginationDTO;
     }
 }
