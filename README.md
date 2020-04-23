@@ -31,6 +31,7 @@
 > git pull origin master # 拉取名为origin的远程仓库的master分支
 > git commit --amend --no-edit # 提交 > 追加文件到上次本地提交 不需要改备注
 > git push -f origin master # 本地强制提交
+> git clone [Url] 复制项目
 > ```
 
 ## 进度
