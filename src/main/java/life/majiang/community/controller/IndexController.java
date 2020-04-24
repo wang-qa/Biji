@@ -24,7 +24,7 @@ public class IndexController {
     @Autowired // 注入 UserMapper
     private UserMapper userMapper;
 
-    @Autowired // 注入 UserMapper
+    @Autowired // 注入 QuestionService
     private QuestionService questionService;
 
     /**
