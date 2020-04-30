@@ -51,7 +51,7 @@
                         </a>
                     </li>
                     <!--高亮当前页-->
-                    <li>
+                    <li th:class="${pagination.page == page}? 'active' : ''" th:each="page : ${pagination.pages}">
                         <a th:href="@{/(page=${page})}" th:text="${page}"></a>
                     </li>
 

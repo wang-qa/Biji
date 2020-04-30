@@ -21,24 +21,35 @@ public class QuestionService {
 
     // 注入依赖
     @Autowired
-    private UserMapper userMapper;
-    @Autowired
     private QuestionMapper questionMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     public PaginationDTO list(Integer page, Integer size) {
 
         PaginationDTO paginationDTO = new PaginationDTO();
+
+        Integer totalPage;
+
         Integer totalCount = questionMapper.count(); // 问题总数
-        paginationDTO.setPagination(totalCount, page, size); // 传入 问题总数 当前页面 每页条数
+
+        // 计算总页数  totalCount / size
+        if (totalCount % size == 0) {
+            totalPage = totalCount / size;
+        } else {
+            totalPage = totalCount / size + 1;
+        }
 
         // 页码异常处理
         if (page < 1) {//页码小于1
             page = 1;
         }
-        if (page > paginationDTO.getTotalPage()) {//页码大于page
-            page = paginationDTO.getTotalPage();
+        if (page > totalPage) {//页码大于page
+            page = totalPage;
         }
 
+        paginationDTO.setPagination(totalPage, page); // 传入 问题总数 当前页面
         //  size * (page -1)  实际页码
         Integer offset = size * (page - 1);
 
@@ -64,17 +75,28 @@ public class QuestionService {
     public PaginationDTO list(Integer userId, Integer page, Integer size) {
 
         PaginationDTO paginationDTO = new PaginationDTO();
+
+        Integer totalPage;
+
         Integer totalCount = questionMapper.countByUserId(userId); // 问题总数
-        paginationDTO.setPagination(totalCount, page, size); // 传入 问题总数 当前页面 每页条数
+
+
+        // 计算总页数  totalCount / size
+        if (totalCount % size == 0) {
+            totalPage = totalCount / size;
+        } else {
+            totalPage = totalCount / size + 1;
+        }
 
         // 页码异常处理
         if (page < 1) {//页码小于1
             page = 1;
         }
-        if (page > paginationDTO.getTotalPage()) {//页码大于page
-            page = paginationDTO.getTotalPage();
+        if (page > totalPage) {//页码大于page
+            page = totalPage;
         }
 
+        paginationDTO.setPagination(totalPage, page); // 传入 问题总数 当前页面
         //  size * (page -1)  实际页码
         Integer offset = size * (page - 1);
 
