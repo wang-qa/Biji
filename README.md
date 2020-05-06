@@ -47,6 +47,7 @@
 > 8. 完善首页问题列表展示
 > 9. 使用 `developer tools` 添加配置 `spring.devtools.restart.exclude=static/**,public/**` 完成自动部署（热更新）
 > 10. 添加分页功能
+> 11. 添加拦截器 `WebConfig`
 >
 
 ```markdown

@@ -50,7 +50,7 @@
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
-                    <!--高亮当前页-->
+                    <!--页码 & 高亮当前页-->
                     <li th:class="${pagination.page == page}? 'active' : ''" th:each="page : ${pagination.pages}">
                         <a th:href="@{/(page=${page})}" th:text="${page}"></a>
                     </li>

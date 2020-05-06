@@ -1,7 +1,6 @@
 package life.majiang.community.controller;
 
 import life.majiang.community.mapper.QuestionMapper;
-import life.majiang.community.mapper.UserMapper;
 import life.majiang.community.model.Question;
 import life.majiang.community.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -20,8 +18,8 @@ public class PublishController {
     @Autowired // 注入 questionMapper
     private QuestionMapper questionMapper;
 
-    @Autowired // 注入 userMapper
-    private UserMapper userMapper;
+//    @Autowired // 注入 userMapper
+//    private UserMapper userMapper;
 
     // get 去渲染页面
     @GetMapping("/publish")
@@ -43,21 +41,24 @@ public class PublishController {
         /**
          * publish_page 获取填写者信息 判断是否登录
          * */
-        User user = null;
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null && cookies.length != 0) {// 判断是用户 Cookie 是否为空 长度不为0 去除空指针
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
-                    String token = cookie.getValue();
-                    user = userMapper.findByToken(token);
-                    // 如果user != null 写入session
-                    if (user != null) {
-                        request.getSession().setAttribute("user", user);
-                    }
-                    break; // 命中后结束循环
-                }
-            }
-        }
+//        User user = null;
+//        Cookie[] cookies = request.getCookies();
+//        if (cookies != null && cookies.length != 0) {// 判断是用户 Cookie 是否为空 长度不为0 去除空指针
+//            for (Cookie cookie : cookies) {
+//                if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
+//                    String token = cookie.getValue();
+//                    user = userMapper.findByToken(token);
+//                    // 如果user != null 写入session
+//                    if (user != null) {
+//                        request.getSession().setAttribute("user", user);
+//                    }
+//                    break; // 命中后结束循环
+//                }
+//            }
+//        }
+
+        // 获取User
+        User user = (User) request.getSession().getAttribute("user");
 
         /**
          * publish_page 问题提交校验逻辑 判断填写内容

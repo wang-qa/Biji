@@ -52,12 +52,12 @@
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
-                    <!--高亮当前页-->
+                    <!--页码 & 高亮当前页-->
                     <li th:class="${pagination.page == page}? 'active' : ''" th:each="page : ${pagination.pages}">
-                        <a th:href="@{'/profile/'+${section}(page=${pagination.page})}" th:text="${page}"></a>
+                        <a th:href="@{'/profile/'+${section}(page=${page})}" th:text="${page}"></a>
                     </li>
 
-                    <li th:if="${pagination.showNext}">
+                    <li th:if="${pagination.showNext}">s
                         <a aria-label="Previous" th:href="@{'/profile/'+${section}(page=${pagination.page +1})}">
                             <span aria-hidden="true">&gt;</span>
                         </a>
