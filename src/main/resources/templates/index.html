@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="zh">
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -19,17 +19,18 @@
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h2><span aria-hidden="true" class="glyphicon glyphicon-list"></span>发现•查看</h2>
-            <hr>
+            <hr text="我是分割线">
             <div class="media" th:each="question: ${pagination.questions}">
                 <div class="media-left">
                     <a href="#">
                         <img alt="用户头像"
                              class="media-object img-rounded"
-                             th:src="${question.user.avatarUrl}">
+                             th:alt="用户头像" th:src="${question.user.avatarUrl}">
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading" th:text="${question.title}">标题</h4>
+                    <h4 class="media-heading">
+                        <a th:href="@{'/question/' + ${question.id}}" th:text="${question.title}"></a>问题标题</h4>
                     <span th:text="${question.description}">描述</span> <br>
                     <span class="text-desc">
                         <span th:text="${question.commentCount}"></span> 个回复 •<span

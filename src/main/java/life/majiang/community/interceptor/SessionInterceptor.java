@@ -24,6 +24,10 @@ public class SessionInterceptor implements HandlerInterceptor {
         Cookie[] cookies = request.getCookies(); // 获取用户 cookie
         if (cookies != null && cookies.length != 0) {// 判断是用户 Cookie 是否为空 长度不为0
             for (Cookie cookie : cookies) {
+                /**
+                 * 做通用的cookie获取session 并写入到session中
+                 */
+
                 if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
                     String token = cookie.getValue();
                     User user = userMapper.findByToken(token);

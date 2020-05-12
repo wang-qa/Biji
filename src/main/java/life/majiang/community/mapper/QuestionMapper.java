@@ -26,4 +26,8 @@ public interface QuestionMapper {
 
     @Select("select count (1) from question where creator = #{userId}")
     Integer countByUserId(@Param("userId") Integer userId); // 查询当前用户问题总数
+
+    @Select("select * from question where id = #{id}")
+    Question getById(@Param("id") Integer id);
+
 }

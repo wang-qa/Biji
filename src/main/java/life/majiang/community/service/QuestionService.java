@@ -117,4 +117,14 @@ public class QuestionService {
 
         return paginationDTO;
     }
+
+    // 通过 questionserver 调用QuestionDTO 获取id
+    public QuestionDTO getById(Integer id) {
+        Question question = questionMapper.getById(id);
+        QuestionDTO questionDTO = new QuestionDTO();
+        BeanUtils.copyProperties(question, questionDTO); // 该工具类的目的是 question的属性快速复制到 questionDTO
+        User user = userMapper.findByID(question.getCreator()); // 用getCreator获取当前User 返回User对象
+        questionDTO.setUser(user); // 添加返回 user属性
+        return questionDTO;
+    }
 }
