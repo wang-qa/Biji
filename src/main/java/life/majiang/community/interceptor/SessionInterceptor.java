@@ -40,7 +40,7 @@ public class SessionInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        return true; // 返回 true 继续执行
+        return true; // 返回 true 继续执行 & session中的user
     }
 
     @Override

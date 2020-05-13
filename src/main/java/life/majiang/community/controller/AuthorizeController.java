@@ -6,9 +6,9 @@ package life.majiang.community.controller;
 
 import life.majiang.community.dto.AccessTokenDTO;
 import life.majiang.community.dto.GithubUser;
-import life.majiang.community.mapper.UserMapper;
 import life.majiang.community.model.User;
 import life.majiang.community.provider.GithubProvider;
+import life.majiang.community.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
@@ -34,8 +35,8 @@ public class AuthorizeController {
     @Value("${github.client.uri}")
     private String clientUri;
 
-    @Autowired // 把 Usermapper 对象放入容器内
-    private UserMapper userMapper;
+    @Autowired // 替换userMapper
+    private UserServices userServices;
 
     @GetMapping("/callback") // 登录成功后返回到登录页
     // 接收返回后的参数 code, state
@@ -63,12 +64,9 @@ public class AuthorizeController {
             user.setToken(token); // 生成唯一的标识码
             user.setName(githubUser.getName()); // set 用户名
             user.setAccountID(String.valueOf(githubUser.getId())); // set 用户第三方id
-            user.setGmtCreate(System.currentTimeMillis()); // set 创建时间
-            user.setGmtModified(user.getGmtCreate()); // set 更新时间
             user.setAvatarUrl(githubUser.getAvatar_url()); // set 用户头像
-            System.out.println("--->>> usermapper >>>--- " + userMapper);
             System.out.println("--->>> insertuser >>>--- " + user);
-            userMapper.insert(user); // 执行SQL
+            userServices.createOrUpdate(user); //  执行SQL 插入或更新user
             /** Cookie 写入 */
             // 自动写入  服务器生成 Token 放入 Cookie
             response.addCookie(new Cookie("token", token));
@@ -80,5 +78,16 @@ public class AuthorizeController {
             return "redirect:/";
         }
     }
+
+    @GetMapping("logout")
+    public String logout(HttpServletRequest request,
+                         HttpServletResponse response) {
+        request.getSession().removeAttribute("user"); // 移除session
+        Cookie cookie = new Cookie("token", null); // 移除token 重新赋值为null
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return "redirect:/";
+    }
+
 }
 

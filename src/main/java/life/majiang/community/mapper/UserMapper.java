@@ -1,10 +1,7 @@
 package life.majiang.community.mapper;
 
 import life.majiang.community.model.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /*
  * 引入数据库
@@ -20,5 +17,11 @@ public interface UserMapper {
 
     @Select("select * from USER where id = #{id}")
     User findByID(@Param("id") Integer id);
+
+    @Select("select * from USER where account_id = #{accountID}")
+    User findByAccountId(@Param("accountID") String accountID); // 根据accountID查询用户
+
+    @Update("update user set name = #{name}, token = ${token} gmt_modified = #{gmt_Modified}, avatar_url = #{avatarUrl}) where id = #{id v}")
+    void update(User user); // 更新用户信息
 
 }

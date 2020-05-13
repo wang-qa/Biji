@@ -20,6 +20,6 @@ public class QuestionController {
         QuestionDTO questionDTO = questionService.getById(id); // 获取用户id
         model.addAttribute("question", questionDTO); // 传递到页面
 
-        return "question";
+        return "question"; // question中的user
     }
 }

@@ -127,4 +127,18 @@ public class QuestionService {
         questionDTO.setUser(user); // 添加返回 user属性
         return questionDTO;
     }
+
+    public void createOrUpdate(Question question) {
+        if (question.getId() == null) {
+            // 插入操作 未找到
+            question.setGmtCreate(System.currentTimeMillis()); // set 创建时间
+            question.setGmtModified(System.currentTimeMillis()); // set 更新时间
+            questionMapper.create(question);
+        } else {
+            // 更新操作 找到
+            question.setGmtModified(System.currentTimeMillis()); // set 更新时间
+            questionMapper.update(question);
+
+        }
+    }
 }

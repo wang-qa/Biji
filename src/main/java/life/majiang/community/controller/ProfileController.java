@@ -27,22 +27,8 @@ public class ProfileController {
                           @RequestParam(name = "page", defaultValue = "1") Integer page, // 默认第1页
                           @RequestParam(name = "size", defaultValue = "5") Integer size, // 默认5页 每页条数
                           Model model) {
-//        User user = null;
-//        Cookie[] cookies = request.getCookies(); // 获取用户 cookie
-//        if (cookies != null && cookies.length != 0) {// 判断是用户 Cookie 是否为空 长度不为0
-//            for (Cookie cookie : cookies) {
-//                if (cookie.getName().equals("token")) { // 检查 cookies_key是否为 token
-//                    String token = cookie.getValue();
-//                    user = userMapper.findByToken(token);
-//                    // 如果user != null 写入session
-//                    if (user != null) {
-//                        System.out.println(user.toString());
-//                        request.getSession().setAttribute("user", user);
-//                    }
-//                    break; // 命中后结束循环
-//                }
-//            }
-//        }
+        // 检测登录状态 移动到 SessionController
+
         // 获取User
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) { // 如果未登录跳转到 首页

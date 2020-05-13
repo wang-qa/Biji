@@ -48,7 +48,10 @@
 > 9. 使用 `developer tools` 添加配置 `spring.devtools.restart.exclude=static/**,public/**` 完成自动部署（热更新）
 > 10. 添加分页功能
 > 11. 添加拦截器 `WebConfig`
-> 12. 完善问题详情页
+> 12. 完善问题详情页 & 修复登录持久化每次插入不更新用户信息 增加问题更新功能
+
+
+> > 排查问题先检查`debug` 信息中的 `Caused by`
 
 ```markdown
 *Flyway Migration*
